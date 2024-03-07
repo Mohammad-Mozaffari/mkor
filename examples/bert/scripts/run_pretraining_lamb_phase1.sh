@@ -42,4 +42,5 @@ mpirun -np $NODES -hostfile $HOSTFILE -ppn 1 bash scripts/launch_pretraining.sh 
    --input_dir $DATA \
    --output_dir results/phase2_6e-3-wd0.01-wu2843-inv50 \
    --weight_decay 0.01 \
-   --num_steps_per_checkpoint 200
+   --num_steps_per_checkpoint 200 \
+   --optimizer mkor

@@ -11,4 +11,5 @@ python -m torch.distributed.launch --nproc_per_node=1 run_pretraining.py \
     --weight_decay 0.01 \
     --num_steps_per_checkpoint 200 \
     --global_batch_size 512 \
-    --local_batch_size 4
+    --local_batch_size 4 \
+    --optimizer mkor
