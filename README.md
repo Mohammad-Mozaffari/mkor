@@ -62,6 +62,8 @@ optimizer = MKOR(
                  warmup_steps=10, 
                  **optimizer_args)
 ```
+Please note that for the backend, you can use the default value (`mkor.utils.backend.EmptyBackend`) for non-distributed 
+settings or `mkor.utils.backend.TorchBackend` for distributed settings with `torch.distributed` as backend.
 4. Train the model and update the optimizer gradient scaler:
 ```python
 # Forward pass

@@ -335,10 +335,10 @@ def get_optimizer(grouped_parameters, lr, model, optimizer_name, weight_decay=0.
     elif optimizer_name == 'mkor':
         sgd_layers = [module for module in model.modules() if
                       isinstance(module, torch.nn.Linear) and module.out_features == 30528]
-        # backend = comm.get_comm_backend()
+        backend = comm.get_comm_backend()
         optimizer = mkor.MKOROptimizer(model, lr=lr, weight_decay=weight_decay, inv_freq=10, measure_time=False,
                                        svd=False,
-                                    #    backend=backend, 
+                                       backend=backend,
                                        sgd_layers=sgd_layers, grad_accum_steps=args.accumulation_steps,
                                        half_precision=True,
                                        optimizer=FusedLAMB(grouped_parameters, lr=lr),
