@@ -84,64 +84,31 @@ and have fine-tuned the pretrained models on the SQuAD v1.1 and
 GLUE datasets. The accuracy results and the corresponding speedups
 are reported in the following tables.
 
-$$
-\require{array}
-\begin{array}{|l|c|c|c|c|c|}
-\hline
-\textbf{Metric} & \textbf{LAMB} & \textbf{KAISA} & \textbf{MKOR} & \textbf{MKOR-H} & \textbf{Eva} \\
-\hline
-\text{F1} & 90.44 & 90.44 & 90.50 & 90.64 & 90.55 \\
-\hline
-\# \text{Iterations} & 1,536 & 1,000 & 1,000 & 600 & 1,000 \\
-\hline
-\text{Time (h)} & 7.97 & 5.71 & 5.25 & 3.10 & 5.24 \\
-\hline
-\text{Speedup} (\times) & 1.00 & 1.39 & 1.51 & 2.57 & 1.52 \\
-\hline
-\end{array}
-$$
+| Metric          | LAMB   | KAISA  | MKOR   | MKOR-H | Eva   |
+|------------------|--------|--------|--------|--------|-------|
+| F1              | 90.44  | 90.44  | 90.50  | 90.64  | 90.55 |
+| # Iterations    | 1,536  | 1,000  | 1,000  | 600    | 1,000 |
+| Time (h)        | 7.97   | 5.71   | 5.25   | 3.10   | 5.24  |
+| Speedup (×)     | 1.00   | 1.39   | 1.51   | 2.57   | 1.52  |
 
-$$
-\require{array}
-\begin{array}{|l|c|c|c|c|}
-\hline
-\textbf{Optimizer} & \textbf{Iterations} & \textbf{Time (h)} & \textbf{Speedup} (\times) & \textbf{Average Metric} \\
-\hline
-\text{LAMB} & 1,563 & 7.97 & 1.00 & 0.8023 \\
-\hline
-\text{KAISA} & 1,563 & 8.93 & 0.89 & 0.796 \\
-\hline
-\text{MKOR} & 1,500 & 7.88 & 1.01 & 0.8214 \\
-\hline
-\text{MKOR} & 600 & 3.10 & 2.57 & 0.8078 \\
-\hline
-\text{MKOR-H} & 600 & 3.10 & 2.57 & 0.811 \\
-\hline
-\text{Eva} & 1,000 & 5.24 & 1.52 & 0.809 \\
-\hline
-\end{array}
-$$
+| Optimizer       | Iterations | MNLI (acc) | QQP (F1) | QNLI (acc) | SST-2 (acc) | COLA (mcc) | STS-B (corr) | MRPC (F1) | RTE (acc) | Average   |
+|------------------|------------|------------|----------|------------|-------------|------------|--------------|-----------|-----------|-----------|
+| LAMB            | 1,563      | 0.841      | 0.878    | 0.913      | 0.919       | 0.516      | 0.875        | 0.812     | 0.664     | 0.8023    |
+| KAISA           | 1,563      | 0.821      | 0.854    | 0.900      | 0.921       | 0.489      | 0.878        | 0.888     | 0.617     | 0.796     |
+| MKOR            | 1,500      | 0.844      | 0.879    | 0.916      | 0.923       | 0.523      | 0.892        | 0.905     | 0.690     | 0.8214    |
+| MKOR            | 600        | 0.833      | 0.878    | 0.904      | 0.921       | 0.494      | 0.886        | 0.893     | 0.653     | 0.8078    |
+| MKOR-H          | 600        | 0.838      | 0.877    | 0.911      | 0.921       | 0.502      | 0.886        | 0.898     | 0.657     | 0.811     |
+| Eva             | 1,000      | 0.839      | 0.877    | 0.907      | 0.914       | 0.499      | 0.890        | 0.904     | 0.650     | 0.809     |
 
-$$
-\require{array}
-\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|}
-\hline
-\textbf{Optimizer} & \textbf{Iterations} & \textbf{MNLI (acc)} & \textbf{QQP (F1)} & \textbf{QNLI (acc)} & \textbf{SST-2 (acc)} & \textbf{COLA (mcc)} & \textbf{STS-B (corr)} & \textbf{MRPC (F1)} & \textbf{RTE (acc)} & \textbf{Average} \\
-\hline
-\text{LAMB} & 1,563 & 0.841 & 0.878 & 0.913 & 0.919 & 0.516 & 0.875 & 0.812 & 0.664 & 0.8023 \\
-\hline
-\text{KAISA} & 1,563 & 0.821 & 0.854 & 0.900 & 0.921 & 0.489 & 0.878 & 0.888 & 0.617 & 0.796 \\
-\hline
-\text{MKOR} & 1,500 & 0.844 & 0.879 & 0.916 & 0.923 & 0.523 & 0.892 & 0.905 & 0.690 & 0.8214 \\
-\hline
-\text{MKOR} & 600 & 0.833 & 0.878 & 0.904 & 0.921 & 0.494 & 0.886 & 0.893 & 0.653 & 0.8078 \\
-\hline
-\text{MKOR-H} & 600 & 0.838 & 0.877 & 0.911 & 0.921 & 0.502 & 0.886 & 0.898 & 0.657 & 0.811 \\
-\hline
-\text{Eva} & 1,000 & 0.839 & 0.877 & 0.907 & 0.914 & 0.499 & 0.890 & 0.904 & 0.650 & 0.809 \\
-\hline
-\end{array}
-$$
+
+| Optimizer | Iterations | MNLI (acc) | QQP (F1) | QNLI (acc) | SST-2 (acc) | COLA (mcc) | STS-B (corr) | MRPC (F1) | RTE (acc) | Average |
+|-----------|------------|------------|----------|------------|-------------|------------|--------------|-----------|-----------|---------|
+| LAMB      | 1,563      | 0.841      | 0.878    | 0.913      | 0.919       | 0.516      | 0.875        | 0.812     | 0.664     | 0.8023  |
+| KAISA     | 1,563      | 0.821      | 0.854    | 0.900      | 0.921       | 0.489      | 0.878        | 0.888     | 0.617     | 0.796   |
+| MKOR      | 1,500      | 0.844      | 0.879    | 0.916      | 0.923       | 0.523      | 0.892        | 0.905     | 0.690     | 0.8214  |
+| MKOR      | 600        | 0.833      | 0.878    | 0.904      | 0.921       | 0.494      | 0.886        | 0.893     | 0.653     | 0.8078  |
+| MKOR-H    | 600        | 0.838      | 0.877    | 0.911      | 0.921       | 0.502      | 0.886        | 0.898     | 0.657     | 0.811   |
+| Eva       | 1,000      | 0.839      | 0.877    | 0.907      | 0.914       | 0.499      | 0.890        | 0.904     | 0.650     | 0.809   |
 
 
 
